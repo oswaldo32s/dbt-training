@@ -4,16 +4,19 @@ models:
   - name: stg_jaffle_shop__customers
     columns:
       - name: customer_id
+        description: The primary key for customer
         tests:
           - unique
           - not_null
   - name: stg_jaffle_shop__orders
     columns:
       - name: order_id
+        description: The primary key for order
         tests:
           - unique
           - not_null
       - name: order_status
+        description: "{{ doc('order_status')}}"
         tests:
           - accepted_values:
               values: ['completed', 'shipped', 'returned', 'return_pending', 'placed']

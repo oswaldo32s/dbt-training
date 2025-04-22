@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_stripe__payments
+    columns:
+      - name: payment_id
+        description: Primary key for payments
+        tests:
+          - unique
+          - not_null
+      - name: payment_method
+        description: "{{ doc('payment_method') }}"
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'gift_card', 'bank_transfer', 'coupon']
+      - name: payment_status
+        description: "{{ doc('payment_status') }}"
+        tests:
+          - accepted_values:
+              values: ['success', 'fail']
